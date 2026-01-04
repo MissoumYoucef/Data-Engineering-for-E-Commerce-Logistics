@@ -1,0 +1,60 @@
+# LogiFlow ETL Pipeline Configuration
+
+# API Configuration
+api:
+  fake_store:
+    base_url: "https://fakestoreapi.com"
+    endpoints:
+      products: "/products"
+      carts: "/carts"
+      users: "/users"
+    timeout: 30
+    retry_attempts: 3
+    retry_delay: 5  # seconds
+
+# Database Configuration
+database:
+  # Default to SQLite for local development
+  type: "sqlite"  # Options: sqlite, postgresql
+  sqlite:
+    path: "data/logiflow.db"
+  postgresql:
+    host: "localhost"
+    port: 5432
+    database: "logiflow"
+    username: "${DB_USERNAME}"
+    password: "${DB_PASSWORD}"
+
+# Data Paths
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  olist_data: "data/raw/olist"  # Place Olist CSV files here
+
+# Transform Configuration
+transform:
+  null_threshold: 0.3  # Max allowed null percentage per column
+  duplicate_check_columns:
+    - "order_id"
+    - "product_id"
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+# Load Configuration
+load:
+  batch_size: 1000
+  upsert_enabled: true
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/etl_pipeline.log"
+
+# Airflow Configuration
+airflow:
+  schedule_interval: "0 2 * * *"  # Daily at 2 AM
+  start_date: "2024-01-01"
+  catchup: false
+  max_active_runs: 1
+  retry_delay_minutes: 5
+  retries: 3

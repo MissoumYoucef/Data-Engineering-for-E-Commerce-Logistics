@@ -1,0 +1,50 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment variables
+.env
+
+# Data files (too large for git)
+data/raw/*.csv
+data/processed/*.csv
+data/*.db
+
+# Logs
+logs/
+*.log
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Distribution
+dist/
+build/
+*.egg-info/
+
+# Airflow
+airflow.db
+airflow.cfg
+webserver_config.py
+airflow_logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation to exclude
+PROBLEMS_AND_SOLUTIONS.md
