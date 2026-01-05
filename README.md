@@ -1,4 +1,4 @@
-# 🚚 Data-Engineering-for-E-Commerce-Logistics
+# 🚚 M2 Project of Data-Engineering-for-E-Commerce-Logistics
 
 **E-Commerce Logistics Data Engineering Platform**
 
